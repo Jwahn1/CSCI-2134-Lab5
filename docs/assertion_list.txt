@@ -1,0 +1,12 @@
+ASSERTION LIST: Where should assertions be added?
+=================================================
+
+Name/Banner# of Developer 1:
+Name/Banner# of Developer 2:
+
+Example:
+Method:   Line #     Assertion itself
+write()   238-239    width >= 0, height >= 0
+
+add 3 more with different assert conditions
+
