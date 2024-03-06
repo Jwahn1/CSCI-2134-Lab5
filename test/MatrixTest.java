@@ -90,6 +90,49 @@ class MatrixTest {
 
     }
 
+    @Test
+    void multiplyWithMatrixNullPointerException(){
+        Matrix res = null;
+        Matrix b = new Matrix(new Scanner(simpleMatrix));
+        Matrix m = new Matrix(new Scanner(simpleMatrix));
+        try{
+            m.multiplyWithMatrix(b,res);
+            assertTrue(false,"add() should have thrown Exception");
+        }catch(NullPointerException e){
+             assertEquals(e.getMessage(),"res or b are null");
+        }
+
+    }
+
+    @Test
+    void multiplyWithMatrixInputMismatchException(){
+        Matrix res = new Matrix(new Scanner(simpleMatrix));
+        Matrix b = new Matrix(new Scanner(simpleMatrix));
+        Matrix m = new Matrix(new Scanner(nonSqMatrix));
+        try{
+            m.multiplyWithMatrix(b,res);
+            assertTrue(false,"add() should have thrown Exception");
+        }catch(InputMismatchException e){
+            assertEquals(e.getMessage(),"original Matrix's height = 3 ,original Matrix's width = 2 " +
+            ",b's height = 2 ,res's height  = 2 ,res's width = 2");
+        }
+
+    }
+
+    //    @Test
+//    void addNullPointerException(){
+//        Matrix res = null;
+//        Matrix b = new Matrix(new Scanner(simpleMatrix));
+//        Matrix m = new Matrix(new Scanner(simpleMatrix));
+//        try{
+//
+//            assertTrue(false,"add() should have thrown Exception");
+//        }catch(NullPointerException e){
+//             assertEquals(e.getMessage(),"res or b are null");
+//        }
+//
+//    }
+
 //    @Test
 //    void addNullPointerException(){
 //        Matrix res = null;
