@@ -129,13 +129,14 @@ public class Matrix {
 
         //if b or res are not allocated. throw InputMismatchException
         if((res == null) || (b == null)){
-            throw new InputMismatchException("");
+            throw new NullPointerException("res or b are null");
         }
 
         // if b or res are not the same size, throw nullPointerException
         if (    (b.getHeight() != height) || (b.getWidth() != width) ||
                 (res.getHeight() != height) || (res.getWidth() != width)) {
-           throw new NullPointerException("");
+           throw new InputMismatchException("b's Height = " + b.getHeight() + "b's Width = " + b.getWidth() +
+           "res's Height = " + res.getHeight() + "res's Width = " + res.getWidth());
         }
 
         // Add each entry of this matrix to the corresponding entry in b and
@@ -157,7 +158,14 @@ public class Matrix {
      * Return: returns res matrix for programming convenience.
      * Exceptions: if res == null thrown an NullPointerException
      */
-    public Matrix multiplyWithScalar(double s, Matrix res) {
+    public Matrix multiplyWithScalar(double s, Matrix res) throws NullPointerException  {
+
+       //if res == null
+        if(res == null){
+            throw new NullPointerException("res is null");
+        }
+
+
         // if res is not allocated return null
         if (res != null) {
             // if matrices are not the same size, return null
@@ -185,17 +193,18 @@ public class Matrix {
      * Exceptions: if b == null or res == null thrown an NullPointerException
      * Exceptions: if dimensions don't match up thrown an InputMismatchException
      */
-    public Matrix multiplyWithMatrix(Matrix b, Matrix res) {
+    public Matrix multiplyWithMatrix(Matrix b, Matrix res) throws NullPointerException,InputMismatchException{
         // Ensure all matrices are allocated
         if ((res == null) || (b == null)) {
-            return null;
+           throw new NullPointerException("res or b is null");
         }
 
         // Ensure all matrices are properly sized.
         int n = b.getWidth();
         if ((b.getHeight() != width) || (res.getHeight() != height) ||
                 (res.getWidth() != n)) {
-            return null;
+           throw new InputMismatchException("b's height = " +
+           b.getHeight() + "res's height  = " + res.getHeight()+ "res's witdh = " + res.getWidth());
         }
 
         // Perform matrix multiplication using the formula
