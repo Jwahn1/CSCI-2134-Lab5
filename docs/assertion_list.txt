@@ -1,7 +1,7 @@
 ASSERTION LIST: Where should assertions be added?
 =================================================
 
-Name/Banner# of Developer 1:
+Name/Banner# of Developer 1: Javier Wahn
 Name/Banner# of Developer 2:
 
 Example:

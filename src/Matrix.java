@@ -125,13 +125,17 @@ public class Matrix {
      * Exceptions: if b == null or res == null thrown an NullPointerException
      * Exceptions: if dimensions don't match up thrown an InputMismatchException
      */
-    public Matrix add(Matrix b, Matrix res) throws NullPointerException,
-            InputMismatchException {
-        // if b or res are not allocated or are not the same size, return null
-        if ((res == null) || (b == null) ||
-                (b.getHeight() != height) || (b.getWidth() != width) ||
+    public Matrix add(Matrix b, Matrix res) throws NullPointerException, InputMismatchException {
+
+        //if b or res are not allocated. throw InputMismatchException
+        if((res == null) || (b == null)){
+            throw new InputMismatchException("");
+        }
+
+        // if b or res are not the same size, throw nullPointerException
+        if (    (b.getHeight() != height) || (b.getWidth() != width) ||
                 (res.getHeight() != height) || (res.getWidth() != width)) {
-            return null;
+           throw new NullPointerException("");
         }
 
         // Add each entry of this matrix to the corresponding entry in b and
@@ -264,6 +268,11 @@ public class Matrix {
      *             IndexOutOfBoundsException
      */
     public void setElem(int i, int j, double v) throws IndexOutOfBoundsException {
+
+        if( (i < 1) || (j < 1) ||  (i > height) || (j > height)){
+            throw new IndexOutOfBoundsException("i = " + i + ", j = " + j);
+        }
+
         // Set the corresponding entry in matrix to v.
         matrix[i-1][j-1] = v;
     }
