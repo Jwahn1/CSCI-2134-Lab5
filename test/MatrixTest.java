@@ -9,6 +9,8 @@
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class MatrixTest {
@@ -37,6 +39,70 @@ class MatrixTest {
         }
     }
 
+    @Test
+    void setElemIndexOutOfBounds() {
+        Matrix m = new Matrix(new Scanner(simpleMatrix));
+        try{
+            m.setElem(0,0,3.0);
+            assertTrue(false,"SetElem() should have thrown Exception");
+        }catch(IndexOutOfBoundsException e){
+            assertEquals(e.getMessage(),"i = 0, j = 0");
+        }
+    }
+    @Test
+    void addNullPointerException(){
+        Matrix res = null;
+        Matrix b = new Matrix(new Scanner(simpleMatrix));
+        Matrix m = new Matrix(new Scanner(simpleMatrix));
+        try{
+            m.add(b,res);
+            assertTrue(false,"add() should have thrown Exception");
+        }catch(NullPointerException e){
+            assertEquals(e.getMessage(),"res or b are null");
+        }
+
+    }
+    @Test
+    void addInputMismatchException(){
+        Matrix res = new Matrix(new Scanner(simpleMatrix));
+        Matrix b = new Matrix(new Scanner(nonSqMatrix));
+        Matrix m = new Matrix(new Scanner(simpleMatrix));
+        try{
+            m.add(b,res);
+            assertTrue(false,"add() should have thrown Exception");
+        }catch(InputMismatchException e){
+            assertEquals(e.getMessage(),"b's Height = 3 ,b's Width = 2 ,res's Height = 2 ,res's Width = 2");
+        }
+
+    }
+
+    @Test
+    void multiplyWithScalarNullPointerException(){
+        Matrix res = null;
+        double a = 3.0;
+        Matrix m = new Matrix(new Scanner(simpleMatrix));
+        try{
+            m.multiplyWithScalar(a,res);
+            assertTrue(false,"add() should have thrown Exception");
+        }catch(NullPointerException e){
+             assertEquals(e.getMessage(),"res is null");
+        }
+
+    }
+
+//    @Test
+//    void addNullPointerException(){
+//        Matrix res = null;
+//        Matrix b = new Matrix(new Scanner(simpleMatrix));
+//        Matrix m = new Matrix(new Scanner(simpleMatrix));
+//        try{
+//
+//            assertTrue(false,"add() should have thrown Exception");
+//        }catch(NullPointerException e){
+//             assertEquals(e.getMessage(),"res or b are null");
+//        }
+//
+//    }
     @Test
     void setElem() {
         Matrix m = new Matrix(new Scanner(simpleMatrix));
