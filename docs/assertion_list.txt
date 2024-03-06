@@ -10,3 +10,6 @@ write()   238-239    width >= 0, height >= 0
 
 add 3 more with different assert conditions
 
+Method:           Line #            Assertion itself
+Matrix(Scanner s)   71-72    width > 0, height > 0
+

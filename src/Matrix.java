@@ -52,7 +52,7 @@ public class Matrix {
         width = mtx.getWidth();
         matrix = new double[height][width];
 
-        // Loop over all array elements and and copy each one.
+        // Loop over all array elements  and copy each one.
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 matrix[i][j] = mtx.matrix[i][j];
@@ -65,9 +65,13 @@ public class Matrix {
      * Parameters:  s: Scanner object used to read in the matrix
      */
     public Matrix(Scanner s) {
+
+
         // Read in dimensions of the matrix and instantiate 2D array
         height = s.nextInt();
         width = s.nextInt();
+        assert height >0 : "the inputted height is negative";
+        assert width >0 : "the inputted width is negative";
         matrix = new double[height][width];
 
         // Loop over array elements in row major order to read in the entries.
@@ -135,8 +139,8 @@ public class Matrix {
         // if b or res are not the same size, throw nullPointerException
         if (    (b.getHeight() != height) || (b.getWidth() != width) ||
                 (res.getHeight() != height) || (res.getWidth() != width)) {
-           throw new InputMismatchException("b's Height = " + b.getHeight() + "b's Width = " + b.getWidth() +
-           "res's Height = " + res.getHeight() + "res's Width = " + res.getWidth());
+           throw new InputMismatchException("b's Height = " + b.getHeight() + " ,b's Width = " + b.getWidth() +
+           " ,res's Height = " + res.getHeight() + " ,res's Width = " + res.getWidth());
         }
 
         // Add each entry of this matrix to the corresponding entry in b and
@@ -196,15 +200,15 @@ public class Matrix {
     public Matrix multiplyWithMatrix(Matrix b, Matrix res) throws NullPointerException,InputMismatchException{
         // Ensure all matrices are allocated
         if ((res == null) || (b == null)) {
-           throw new NullPointerException("res or b is null");
+           throw new NullPointerException("res or b are null");
         }
 
         // Ensure all matrices are properly sized.
         int n = b.getWidth();
-        if ((b.getHeight() != width) || (res.getHeight() != height) ||
-                (res.getWidth() != n)) {
-           throw new InputMismatchException("b's height = " +
-           b.getHeight() + "res's height  = " + res.getHeight()+ "res's witdh = " + res.getWidth());
+        if ((b.getHeight() != width) || (res.getHeight() != height) || (res.getWidth() != n)) {
+           throw new InputMismatchException("original Matrix's height = "+height +
+           " ,original Matrix's width = "+width +" ,b's height = " +
+           b.getHeight() + " ,res's height  = " + res.getHeight()+ " ,res's width = " + res.getWidth());
         }
 
         // Perform matrix multiplication using the formula
@@ -277,6 +281,7 @@ public class Matrix {
      *             IndexOutOfBoundsException
      */
     public void setElem(int i, int j, double v) throws IndexOutOfBoundsException {
+
 
         if( (i < 1) || (j < 1) ||  (i > height) || (j > height)){
             throw new IndexOutOfBoundsException("i = " + i + ", j = " + j);
