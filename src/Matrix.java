@@ -35,6 +35,9 @@ public class Matrix {
         matrix = new double[m][n];
         height = m;
         width = n;
+
+        assert matrix != null : "created matrix is null";
+
     }
 
     /**
@@ -58,6 +61,8 @@ public class Matrix {
                 matrix[i][j] = mtx.matrix[i][j];
             }
         }
+        assert mtx.getHeight() == height : "duplicate matrix doesnt have the same height as original";
+        assert mtx.getWidth() == width : "duplicate matrix doesnt have the same width as original";
     }
 
     /**
@@ -119,6 +124,7 @@ public class Matrix {
                 matrix[i][j] = -matrix[i][j];
             }
         }
+
     }
 
     /**

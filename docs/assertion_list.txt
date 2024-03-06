@@ -13,3 +13,8 @@ add 3 more with different assert conditions
 Method:           Line #            Assertion itself
 Matrix(Scanner s)   71-72    width > 0, height > 0
 
+Method:           Line #            Assertion itself
+Matrix(Matrix mtx) 61-62    mtx.getHeight() == height, mtx.getWidth() == width
+
+Method:           Line #            Assertion itself
+Matrix(int m, int n) 39         matrix != null
